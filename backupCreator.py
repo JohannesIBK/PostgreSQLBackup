@@ -47,7 +47,7 @@ def createConnection():
 def zipFile(fileName):
     zipFileName = fileName + '.zip'
     with ZipFile(zipFileName, 'w') as zipf:
-        zipf.write(PG_BACKUP_PATH + fileName + '.backup')
+        zipf.write(PG_BACKUP_PATH + fileName + '.txt')
 
     return zipFileName
 
@@ -56,11 +56,11 @@ def uploadFile(fileName):
     if not UPLOAD_DRIVE:
         return
 
-    if os.path.isfile(PG_BACKUP_PATH + fileName + '.backup'):
+    if os.path.isfile(PG_BACKUP_PATH + fileName + '.txt'):
         if ZIP_FILES:
             file = zipFile(fileName)
         else:
-            file = fileName + '.backup'
+            file = fileName + '.txt'
 
         print('Uploading...')
         drive = createConnection()
@@ -70,7 +70,7 @@ def uploadFile(fileName):
                              fields='id').execute()
         print('Upload completed.')
 
-        os.remove(PG_BACKUP_PATH + fileName + '.backup')
+        os.remove(PG_BACKUP_PATH + fileName + '.txt')
         if ZIP_FILES:
             os.remove(PG_BACKUP_PATH + fileName + '.zip')
     else:
@@ -81,7 +81,7 @@ def createBackup():
     print('Creating Backup...')
     proc = sp.Popen(['su', 'postgres'], stdin=sp.PIPE, stdout=sp.PIPE, stderr=sp.PIPE)
     currentDate = datetime.datetime.now().strftime("B_%d-%m-%Y-%H-%M")
-    cmd = 'PGPASSWORD=' + PG_PASSWORD + ' pg_dump discord > ' + currentDate + '.backup\n'
+    cmd = 'PGPASSWORD=' + PG_PASSWORD + ' pg_dump discord > ' + currentDate + '.txt\n'
     proc.stdin.write(cmd.encode())
     proc.communicate()
 
