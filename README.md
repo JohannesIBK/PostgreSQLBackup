@@ -1,5 +1,6 @@
 # PostgreSQLBackup
 Backup your PostgreSQL Database and upload it to your drive!
+The script will create a backup and upload it every 24 hours.
 
 ## Requirements
 ```
