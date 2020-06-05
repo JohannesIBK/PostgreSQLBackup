@@ -6,7 +6,7 @@ Backup your PostgreSQL Database and upload it to your drive!
 pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
 ```
 **Source:** https://developers.google.com/drive/api/v3/quickstart/python
-Tested with **Python 3.8**, but should work also for **3.6**.
+Tested with **Python 3.8**, but should also work for version **3.6**.
 
 ## How to use
 ### Configure the File
