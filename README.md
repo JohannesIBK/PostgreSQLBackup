@@ -26,7 +26,7 @@ Get an API key at [**Google Dev Page**](https://developers.google.com/drive/api/
 - Click on `Enable the Drive API`
 - Select `Desktop app` 
 - Click on `CREATE`
-- Download the client configuration and move them to the python file
+- Download the client configuration and move them to the Python file
 
 #### Configure
 ```python
